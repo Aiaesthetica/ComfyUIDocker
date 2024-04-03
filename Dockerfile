@@ -40,11 +40,10 @@ RUN pip3 install --no-cache-dir torch torchvision torchaudio --index-url https:/
 
 # Install runpod
 RUN pip3 install runpod requests
-
 # Download all models that workflow requires
 # checkpoints
 RUN wget -O models/checkpoints/sd_xl_base_1.0.safetensors https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors
-RUN wget -O models/checkpoints/pornmasterPro_proDPOV1.safetensors https://civitai.com/api/download/models/340218
+RUN wget -U Mozilla/5.0 -O models/checkpoints/pornmasterPro_proDPOV1.safetensors https://civitai.com/api/download/models/340218
 # VAEs
 RUN wget -O models/vae/sdxl_vae.safetensors https://huggingface.co/stabilityai/sdxl-vae/resolve/main/sdxl_vae.safetensors
 RUN wget -O models/vae/sdxl-vae-fp16-fix.safetensors https://huggingface.co/madebyollin/sdxl-vae-fp16-fix/resolve/main/sdxl_vae.safetensors
@@ -53,7 +52,7 @@ RUN wget -O models/vae/vae-ft-mse-840000-ema-pruned.safetensors https://huggingf
 RUN wget -O models/clip_vision/clip_vision.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/image_encoder/model.safetensors?download=true
 # loras
 RUN wget -O models/loras/xl_more_art-full_v1.safetensors https://civitai.com/api/download/models/152309
-RUN wget -O models/loras/GodPussy1 v4.safetensors https://civitai.com/api/download/models/99602
+RUN wget -U mozilla -O models/loras/GodPussy1v4.safetensors https://civitai.com/api/download/models/99602
 RUN wget -O models/loras/ip-adapter-faceid_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15_lora.safetensors?download=true
 RUN wget -O models/loras/ip-adapter-faceid-plus_sd15_lora.safetensors https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15_lora.safetensors?download=true
 RUN wget -O models/loras/ip-adapter-full-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors
@@ -71,21 +70,21 @@ RUN wget -O models/insightface/models/inswapper_128.onnx https://huggingface.co/
 # controlnet
 RUN wget -O models/controlnet/diffusion_pytorch_model.safetensors https://huggingface.co/InstantX/InstantID/resolve/main/ControlNetModel/diffusion_pytorch_model.safetensors?download=true
 # ipadapter
-RUN wget -O models/ip-adapter/ip-adapter-faceid_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin
-RUN wget -O models/ip-adapter/ip-adapter-faceid-plus_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15.bin
-RUN wget -O models/ip-adapter/ip-adapter-full-face_sd15.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.bin?download=true
-RUN wget -O models/ip-adapter/ip-adapter-full-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors
-RUN wget -O models/ip-adapter/ip-adapter-plus-face_sd15.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.bin?download=true
-RUN wget -O models/ip-adapter/ip-adapter-plus-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors
+RUN wget -O models/ipadapter/ip-adapter-faceid_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid_sd15.bin
+RUN wget -O models/ipadapter/ip-adapter-faceid-plus_sd15.bin https://huggingface.co/h94/IP-Adapter-FaceID/resolve/main/ip-adapter-faceid-plus_sd15.bin
+RUN wget -O models/ipadapter/ip-adapter-full-face_sd15.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.bin?download=true
+RUN wget -O models/ipadapter/ip-adapter-full-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-full-face_sd15.safetensors
+RUN wget -O models/ipadapter/ip-adapter-plus-face_sd15.bin https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.bin?download=true
+RUN wget -O models/ipadapter/ip-adapter-plus-face_sd15.safetensors https://huggingface.co/h94/IP-Adapter/resolve/main/models/ip-adapter-plus-face_sd15.safetensors
 
 # custom nodes
-RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git /custom_nodes
-RUN git clone https://github.com/cubiq/ComfyUI_InstantID.git /custom_nodes
-RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git /custom_nodes
-RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /custom_nodes
-RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git /custom_nodes
-RUN git clone https://github.com/twri/sdxl_prompt_styler.git /custom_nodes
-RUN git clone https://github.com/Stability-AI/stability-ComfyUI-nodes.git /custom_nodes
+RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git /custom_nodes/ComfyUI_Comfyroll_CustomNodes
+RUN git clone https://github.com/cubiq/ComfyUI_InstantID.git /custom_nodes/ComfyUI_InstantID
+RUN git clone https://github.com/cubiq/ComfyUI_IPAdapter_plus.git /custom_nodes/ComfyUI_IPAdapter_plus
+RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /custom_nodes/ComfyUI-Impact-Pack
+RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git /custom_nodes/ComfyUI-Manager
+RUN git clone https://github.com/twri/sdxl_prompt_styler.git /custom_nodes/sdxl_prompt_styler
+RUN git clone https://github.com/Stability-AI/stability-ComfyUI-nodes.git /custom_nodes/stability-ComfyUI-nodes
 
 # Example for adding specific models into image
 # ADD models/checkpoints/sd_xl_base_1.0.safetensors models/checkpoints/
