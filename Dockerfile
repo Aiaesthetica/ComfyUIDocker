@@ -85,7 +85,10 @@ RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /custom_nodes/
 RUN git clone https://github.com/ltdrdata/ComfyUI-Manager.git /custom_nodes/ComfyUI-Manager
 RUN git clone https://github.com/twri/sdxl_prompt_styler.git /custom_nodes/sdxl_prompt_styler
 RUN git clone https://github.com/Stability-AI/stability-ComfyUI-nodes.git /custom_nodes/stability-ComfyUI-nodes
+RUN git clone git clone https://github.com/city96/ComfyUI_NetDist /custom_nodes/ComfyUI_NetDist 
 
+WORKDIR /comfyui/custom_nodes
+RUN pip install requests 
 # Example for adding specific models into image
 # ADD models/checkpoints/sd_xl_base_1.0.safetensors models/checkpoints/
 # ADD models/vae/sdxl_vae.safetensors models/vae/
